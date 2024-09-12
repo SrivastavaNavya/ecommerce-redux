@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { Container, Row, Col } from 'react-bootstrap';
 import './App.css';
+import Cart from './components/Cart';
+import Product from './components/Product';
+import products from './products.json';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Cart />
+      <Container>
+        <Row>
+          {products.map((product, index) => (
+            <Col xs={12} sm={6} md={4} lg={3} key={index} className="mb-4">
+              <Product {...product} />
+            </Col>
+          ))}
+        </Row>
+      </Container>
     </div>
   );
 }
